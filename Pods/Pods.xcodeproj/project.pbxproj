@@ -190,38 +190,31 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 46EB2E00000000 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0A82B859B846D6495A049A6746962C37;
-			remoteInfo = GlovoUtilities;
-		};
-		46EB2E00001AF0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 46EB2E00000000 /* Project object */;
-			proxyType = 1;
 			remoteGlobalIDString = 1988226A6B9D4D9CB6C68283E38E5B97;
 			remoteInfo = ReactiveKit;
 		};
-		46EB2E00001B10 /* PBXContainerItemProxy */ = {
+		46EB2E00001AF0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 46EB2E00000000 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CAFFEFF8D4D045DBA93626E3A6FEFE34;
 			remoteInfo = "Pods-ReactiveKitTestIssue";
 		};
-		46EB2E00001B30 /* PBXContainerItemProxy */ = {
+		46EB2E00001B10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 46EB2E00000000 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0A82B859B846D6495A049A6746962C37;
 			remoteInfo = GlovoUtilities;
 		};
-		46EB2E00001B50 /* PBXContainerItemProxy */ = {
+		46EB2E00001B30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 46EB2E00000000 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6F13695E06195A78EA8A95F8C7ED0D2F;
 			remoteInfo = Nimble;
 		};
-		46EB2E00001B70 /* PBXContainerItemProxy */ = {
+		46EB2E00001B50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 46EB2E00000000 /* Project object */;
 			proxyType = 1;
@@ -519,25 +512,15 @@
 		46EB2E00000080 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				46EB2E000000B0 /* GlovoUtilities */,
+				46EB2E000000C0 /* GlovoUtilities */,
 				46EB2E000000D0 /* Nimble */,
 				46EB2E000000E0 /* Quick */,
-				46EB2E000000C0 /* ReactiveKit */,
+				46EB2E000000B0 /* ReactiveKit */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		46EB2E000000B0 /* GlovoUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				46EB2E00000A30 /* Frameworks */,
-				46EB2E00000A90 /* Support Files */,
-			);
-			name = GlovoUtilities;
-			path = GlovoUtilities;
-			sourceTree = "<group>";
-		};
-		46EB2E000000C0 /* ReactiveKit */ = {
+		46EB2E000000B0 /* ReactiveKit */ = {
 			isa = PBXGroup;
 			children = (
 				46EB2E00000360 /* Accumulator.swift */,
@@ -588,6 +571,16 @@
 			);
 			name = ReactiveKit;
 			path = ReactiveKit;
+			sourceTree = "<group>";
+		};
+		46EB2E000000C0 /* GlovoUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				46EB2E00000A30 /* Frameworks */,
+				46EB2E00000A90 /* Support Files */,
+			);
+			name = GlovoUtilities;
+			path = GlovoUtilities;
 			sourceTree = "<group>";
 		};
 		46EB2E000000D0 /* Nimble */ = {
@@ -907,10 +900,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				46EB2E00001B40 /* PBXTargetDependency */,
-				46EB2E00001B60 /* PBXTargetDependency */,
 				46EB2E00001B20 /* PBXTargetDependency */,
-				46EB2E00001B80 /* PBXTargetDependency */,
+				46EB2E00001B40 /* PBXTargetDependency */,
+				46EB2E00001B00 /* PBXTargetDependency */,
+				46EB2E00001B60 /* PBXTargetDependency */,
 			);
 			name = "Pods-ReactiveKitTestIssueTests";
 			productName = "Pods-ReactiveKitTestIssueTests";
@@ -966,7 +959,6 @@
 			);
 			dependencies = (
 				46EB2E00001AE0 /* PBXTargetDependency */,
-				46EB2E00001B00 /* PBXTargetDependency */,
 			);
 			name = "Pods-ReactiveKitTestIssue";
 			productName = "Pods-ReactiveKitTestIssue";
@@ -1243,39 +1235,33 @@
 /* Begin PBXTargetDependency section */
 		46EB2E00001AE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = GlovoUtilities;
-			target = 0A82B859B846D6495A049A6746962C37 /* GlovoUtilities */;
+			name = ReactiveKit;
+			target = 1988226A6B9D4D9CB6C68283E38E5B97 /* ReactiveKit */;
 			targetProxy = 46EB2E00001AD0 /* PBXContainerItemProxy */;
 		};
 		46EB2E00001B00 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = ReactiveKit;
-			target = 1988226A6B9D4D9CB6C68283E38E5B97 /* ReactiveKit */;
+			name = "Pods-ReactiveKitTestIssue";
+			target = CAFFEFF8D4D045DBA93626E3A6FEFE34 /* Pods-ReactiveKitTestIssue */;
 			targetProxy = 46EB2E00001AF0 /* PBXContainerItemProxy */;
 		};
 		46EB2E00001B20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-ReactiveKitTestIssue";
-			target = CAFFEFF8D4D045DBA93626E3A6FEFE34 /* Pods-ReactiveKitTestIssue */;
+			name = GlovoUtilities;
+			target = 0A82B859B846D6495A049A6746962C37 /* GlovoUtilities */;
 			targetProxy = 46EB2E00001B10 /* PBXContainerItemProxy */;
 		};
 		46EB2E00001B40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = GlovoUtilities;
-			target = 0A82B859B846D6495A049A6746962C37 /* GlovoUtilities */;
+			name = Nimble;
+			target = 6F13695E06195A78EA8A95F8C7ED0D2F /* Nimble */;
 			targetProxy = 46EB2E00001B30 /* PBXContainerItemProxy */;
 		};
 		46EB2E00001B60 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Nimble;
-			target = 6F13695E06195A78EA8A95F8C7ED0D2F /* Nimble */;
-			targetProxy = 46EB2E00001B50 /* PBXContainerItemProxy */;
-		};
-		46EB2E00001B80 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
 			name = Quick;
 			target = C82891EAB7293DBEE916B21F57E8474D /* Quick */;
-			targetProxy = 46EB2E00001B70 /* PBXContainerItemProxy */;
+			targetProxy = 46EB2E00001B50 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

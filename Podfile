@@ -10,7 +10,7 @@ target 'ReactiveKitTestIssue' do
   use_frameworks!
 
   pod "ReactiveKit"
-  pod "GlovoUtilities"
+ 
 
 
   # Pods for ReactiveKitTestIssue

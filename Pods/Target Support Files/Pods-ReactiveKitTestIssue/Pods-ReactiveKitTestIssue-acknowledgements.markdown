@@ -1,11 +1,6 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## GlovoUtilities
-
-Copyright (c) 2021 Glovo
-
-
 ## ReactiveKit
 
 The MIT License (MIT)

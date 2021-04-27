@@ -1,0 +1,29 @@
+PODS:
+  - GlovoUtilities (0.18.0)
+  - Nimble (9.0.1)
+  - Quick (3.1.2)
+  - ReactiveKit (3.17.4)
+
+DEPENDENCIES:
+  - GlovoUtilities
+  - Nimble
+  - Quick
+  - ReactiveKit
+
+SPEC REPOS:
+  https://artifactory.glovoint.com/artifactory/api/pods/cocoapods-local:
+    - GlovoUtilities
+  trunk:
+    - Nimble
+    - Quick
+    - ReactiveKit
+
+SPEC CHECKSUMS:
+  GlovoUtilities: 30bbd0c225bdaaf97a1315b681efc2c36b17d3ac
+  Nimble: 7bed62ffabd6dbfe05f5925cbc43722533248990
+  Quick: 60f0ea3b8e0cfc0df3259a5c06a238ad8b3c46e0
+  ReactiveKit: f9f9e079efa39312c597bf1508ef4810d111ce76
+
+PODFILE CHECKSUM: 6264c7e2b829af3c1481a3e4f4a45202aba98335
+
+COCOAPODS: 1.10.1

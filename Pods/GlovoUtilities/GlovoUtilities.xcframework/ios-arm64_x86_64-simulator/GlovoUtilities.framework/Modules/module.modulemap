@@ -1,0 +1,11 @@
+framework module GlovoUtilities {
+  umbrella header "GlovoUtilities-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module GlovoUtilities.Swift {
+    header "GlovoUtilities-Swift.h"
+    requires objc
+}

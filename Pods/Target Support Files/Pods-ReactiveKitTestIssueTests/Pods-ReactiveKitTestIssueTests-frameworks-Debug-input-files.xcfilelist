@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-ReactiveKitTestIssueTests/Pods-ReactiveKitTestIssueTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework
+${BUILT_PRODUCTS_DIR}/Quick/Quick.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/GlovoUtilities/GlovoUtilities.framework/GlovoUtilities

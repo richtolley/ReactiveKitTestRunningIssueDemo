@@ -1,0 +1,6 @@
+framework module Pods_ReactiveKitTestIssue {
+  umbrella header "Pods-ReactiveKitTestIssue-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-ReactiveKitTestIssue/Pods-ReactiveKitTestIssue-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/GlovoUtilities/GlovoUtilities.framework/GlovoUtilities

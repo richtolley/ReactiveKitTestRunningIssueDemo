@@ -1,0 +1,522 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name GlovoUtilities
+import CommonCrypto
+import CoreLocation
+import Foundation
+@_exported import GlovoUtilities
+import Swift
+import UIKit
+import os.log
+import os
+public enum Abort {
+  public struct Reason : CustomDebugStringConvertible {
+    public static let shutUpXcode: GlovoUtilities.Abort.Reason
+    public static let mustBeOverridden: GlovoUtilities.Abort.Reason
+    public static let unreachable: GlovoUtilities.Abort.Reason
+    public static let notYetImplemented: GlovoUtilities.Abort.Reason
+    public static let invalidLogic: GlovoUtilities.Abort.Reason
+    public static let caseNotManaged: GlovoUtilities.Abort.Reason
+    public let debugDescription: String
+    public init(_ why: String)
+  }
+  public static func because(_ reason: Reason, file: StaticString = #file, line: UInt = #line, function: StaticString = #function) -> Never
+  public static func because(_ reason: String, file: StaticString = #file, line: UInt = #line, function: StaticString = #function) -> Never
+  public static func `if`(_ condition: @autoclosure () -> Bool, because reason: Reason, file: StaticString = #file, line: UInt = #line, function: StaticString = #function)
+}
+public struct Assert {
+  public static func isMainThread(_ file: StaticString = #file, line: UInt = #line, function: StaticString = #function)
+  public static func that(_ condition: @autoclosure () -> Bool, because: Abort.Reason, file: StaticString = #file, line: UInt = #line, function: StaticString = #function)
+  public static func that(_ condition: @autoclosure () -> Bool, because: String, file: StaticString = #file, line: UInt = #line, function: StaticString = #function)
+}
+extension Array {
+  public init(reserveCapacity: Int)
+}
+extension Array {
+  public subscript(safe index: Int) -> Element? {
+    get
+    set
+  }
+}
+extension Array where Element == Swift.UInt8 {
+  public var toHexString: String {
+    get
+  }
+}
+open class AsyncMainThreadExecutor {
+  public init(queue: DispatchQueue = .main)
+  open func execute(execute code: @escaping () -> Void)
+  open func execute(after deadline: DispatchTime, execute code: @escaping () -> Void)
+  @objc deinit
+}
+extension Bool {
+  public var isTrue: Bool {
+    get
+  }
+  public var isFalse: Bool {
+    get
+  }
+  public var toString: String {
+    get
+  }
+}
+extension Bundle {
+  public static func isTestFlight() -> Bool
+}
+extension Bundle {
+  public func appName() -> String
+  public func appVersion() -> String
+  public func appBuild() -> String
+  public func appInfo() -> String
+  public func schemes() -> [String]
+}
+extension CALayer {
+  public func addBorder(width: CGFloat, color: UIColor, cornerRadius: CGFloat? = nil)
+  public func roundCorners(radius: CGFloat)
+}
+extension CGPath {
+  public func translate(by point: CGPoint) -> CGPath?
+}
+extension CLLocationCoordinate2D {
+  public static var zero: CLLocationCoordinate2D {
+    get
+  }
+}
+extension CLLocationCoordinate2D : Equatable {
+}
+public func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool
+public protocol CredentialStore {
+  @discardableResult
+  func set<V>(_ value: V, forKey key: String) -> Bool where V : Swift.Encodable
+  func get<D>(_ key: String) -> D? where D : Swift.Decodable
+  @discardableResult
+  func delete(_ key: String) -> Bool
+}
+extension Data {
+  public var bytes: [UInt8] {
+    get
+  }
+  public func toHexString() -> String
+}
+extension Date {
+  public func distanceInDays(otherDate: Date) -> Int
+  public func byAdding(days: Int) -> Date
+  public func byAdding(minutes: Int) -> Date
+  public func byAdding(hours: Int) -> Date
+  public func byAdding(seconds: Int) -> Date
+  public func toCeilMins(_ minuteInterval: Int, timeZone: TimeZone = .current) -> Date
+}
+extension Dictionary {
+  public func combinedWith(_ other: [Key : Value]) -> [Key : Value]
+  public func filteredByKeyType<T>(_: T.Type) -> [T : Value] where T : Swift.Hashable
+  public var flattened: [String : Any] {
+    get
+  }
+}
+public func == (lhs: [String : Any], rhs: [String : Any]) -> Bool
+extension Dictionary {
+  public init(_ pairs: [Element])
+  public func map<T>(transform: (Value) throws -> T) rethrows -> [Key : T]
+  public func compactMap<T>(transform: (Value) throws -> T?) rethrows -> [Key : T]
+}
+public protocol ErrorCodeProviderProtocol {
+  var errorCode: String { get }
+}
+extension NSError : ErrorCodeProviderProtocol {
+  public var errorCode: String {
+    get
+  }
+}
+public enum FatalErrorUtil {
+  public static var fatalErrorClosure: (String, StaticString, UInt) -> Never
+  public static func replaceFatalError(closure: @escaping (String, StaticString, UInt) -> Never)
+  public static func restoreFatalError()
+}
+extension Int {
+  public var toString: String {
+    get
+  }
+}
+public protocol InterfaceBuilderProtocol : AnyObject {
+  func setHierarchy()
+  func setUI()
+  func setLayout()
+}
+extension InterfaceBuilderProtocol {
+  public func setHierarchy()
+  public func setUI()
+  public func setLayout()
+  public func prepareUI()
+}
+final public class KeychainCredentialStore : CredentialStore {
+  final public var keyPrefix: Swift.String
+  public init()
+  @discardableResult
+  final public func set<V>(_ value: V, forKey key: String) -> Bool where V : Swift.Encodable
+  final public func get<D>(_ key: String) -> D? where D : Swift.Decodable
+  @discardableResult
+  final public func delete(_ key: String) -> Bool
+  @objc deinit
+}
+final public class KeyTracker : KeyTrackerProtocol {
+  final public let userDefaults: UserDefaults
+  public init(userDefaults: UserDefaults = UserDefaults.standard)
+  final public func add<T>(value: T, forKey key: String) where T : Swift.Equatable
+  final public func check<T>(value: T, forKey key: String) -> Bool where T : Swift.Equatable
+  final public func getValuesFor<T>(key: String) -> [T]? where T : Swift.Equatable
+  final public func remove<T>(value: T, forKey key: String) where T : Swift.Equatable
+  final public func set<T>(value: T, forKey key: String) where T : Swift.Equatable
+  final public func getValue<T>(forKey key: String) -> T? where T : Swift.Equatable
+  @objc deinit
+}
+public protocol KeyTrackerProtocol {
+  func add<T>(value: T, forKey key: String) where T : Swift.Equatable
+  func check<T>(value: T, forKey key: String) -> Bool where T : Swift.Equatable
+  func getValuesFor<T>(key: String) -> [T]? where T : Swift.Equatable
+  func remove<T>(value: T, forKey key: String) where T : Swift.Equatable
+  func set<T>(value: T, forKey key: String) where T : Swift.Equatable
+  func getValue<T>(forKey key: String) -> T? where T : Swift.Equatable
+}
+extension Locale {
+  public static func isSystemLanguage(_ lang: String?) -> Bool
+  public static func getSystemLanguage() -> String
+  public func isRightToLeftLanguage() -> Bool
+}
+public enum Log {
+  public static func add(recorder: LogRecorderProtocol)
+}
+extension Log {
+  public static func info(_ message: String)
+  public static func warning(_ message: String)
+  public static func debug(_ message: String)
+  public static func error(_ error: Error, context: String? = nil)
+}
+public protocol LogRecorderProtocol : AnyObject {
+  func message(_ message: String, severity: LogSeverity)
+}
+public enum LogSeverity : Equatable {
+  case info
+  case warning
+  case debug
+  case error
+  public var prefix: String {
+    get
+  }
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: GlovoUtilities.LogSeverity, b: GlovoUtilities.LogSeverity) -> Swift.Bool
+}
+public struct NonEmpty<C> : Collection where C : Swift.Collection {
+  public typealias Element = C.Element
+  public enum Index : Comparable {
+    case head
+    case tail(C.Index)
+    public static func < (lhs: Index, rhs: Index) -> Bool
+    public static func == (a: GlovoUtilities.NonEmpty<C>.Index, b: GlovoUtilities.NonEmpty<C>.Index) -> Swift.Bool
+  }
+  public var head: Element {
+    get
+  }
+  public var tail: C {
+    get
+  }
+  public init(_ head: Element, _ tail: C)
+  public var startIndex: Index {
+    get
+  }
+  public var endIndex: Index {
+    get
+  }
+  public subscript(position: Index) -> Element {
+    get
+  }
+  public func index(after index: NonEmpty<C>.Index) -> NonEmpty<C>.Index
+  public typealias Iterator = Swift.IndexingIterator<GlovoUtilities.NonEmpty<C>>
+  public typealias SubSequence = Swift.Slice<GlovoUtilities.NonEmpty<C>>
+  public typealias Indices = Swift.DefaultIndices<GlovoUtilities.NonEmpty<C>>
+}
+extension NonEmpty where C.Index == Swift.Int {
+  public subscript(position: Int) -> Element {
+    get
+  }
+}
+extension NonEmpty where C : Swift.BidirectionalCollection {
+  public var first: Element {
+    get
+  }
+  public var last: Element {
+    get
+  }
+}
+extension NonEmpty : CustomStringConvertible {
+  public var description: String {
+    get
+  }
+}
+extension NonEmpty where C : Swift.RangeReplaceableCollection {
+  public mutating func append(_ newElement: Element)
+}
+extension NonEmpty where C : Swift.BidirectionalCollection, C : Swift.RangeReplaceableCollection {
+  public mutating func push(_ element: Element)
+  @discardableResult
+  public mutating func pop() -> Element
+  public func peek() -> Element
+}
+public enum FontSizeConstants {
+  public static let minimumLineHeightAddition: CGFloat
+  public static let boundingBoxHeightAddition: CGFloat
+}
+extension NSAttributedString {
+  public static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString
+}
+extension NSAttributedString {
+  public static let empty: Foundation.NSAttributedString
+}
+extension NSAttributedString {
+  public func heightWithConstrained(width: CGFloat) -> CGFloat
+  public func widthWithConstrained(height: CGFloat) -> CGFloat
+  public func sizeWithConstrained(size: CGSize) -> CGRect
+}
+public func flatten<A, B, C>(_ tuple: ((A, B), C)) -> (A, B, C)
+public func flatten<A, B, C>(_ tuple: (A, (B, C))) -> (A, B, C)
+public func flatten<A, B, C, D>(_ tuple: (((A, B), C), D)) -> (A, B, C, D)
+public func flatten<A, B, C, D>(_ tuple: ((A, B, C), D)) -> (A, B, C, D)
+public func getArray<T, U>(from: [U : Any], with key: U) -> [T] where U : Swift.Hashable
+extension Optional {
+  @inlinable public func `do`(_ action: ((Wrapped) -> Void)?) {
+    guard let self = self else { return }
+    action?(self)
+  }
+  public var isNotNil: Bool {
+    get
+  }
+  public func apply<Result>(_ transform: ((Wrapped) -> Result)?) -> Result?
+  public func apply<Value, Result>(_ value: Value?) -> Result? where Wrapped == (Value) -> Result
+}
+extension Optional where Wrapped == Swift.String {
+  public var orEmpty: String {
+    get
+  }
+  public var nilIfEmpty: String? {
+    get
+  }
+}
+extension Optional where Wrapped == Swift.Bool {
+  public var orFalse: Bool {
+    get
+  }
+}
+extension Optional where Wrapped == Swift.String {
+  public var isNilOrEmpty: Bool {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class OSLogRecorder : LogRecorderProtocol {
+  final public func message(_ message: String, severity: LogSeverity)
+  @objc deinit
+}
+public protocol RawRepresentableNotInitable : Swift.RawRepresentable {
+}
+extension RawRepresentable where Self : GlovoUtilities.RawRepresentableNotInitable {
+  public init?(rawValue: String)
+}
+extension RawRepresentable where Self.RawValue : Swift.Hashable {
+  public func hash(into hasher: inout Hasher)
+}
+public protocol ReuseIdentifiable {
+  static var identifier: String { get }
+}
+extension ReuseIdentifiable {
+  public static var identifier: String {
+    get
+  }
+}
+public struct Shadow : Equatable {
+  public let color: UIColor
+  public let offset: CGSize
+  public let radius: CGFloat
+  public let opacity: Float
+  public init(color: UIColor, offset: CGSize, radius: CGFloat, opacity: Float)
+  public static func == (a: GlovoUtilities.Shadow, b: GlovoUtilities.Shadow) -> Swift.Bool
+}
+extension Shadow {
+  public func multiplyingOpacity(by multiplier: Float) -> Shadow
+  public func with(color: UIColor) -> Shadow
+  public func with(offset: CGSize) -> Shadow
+  public func with(radius: CGFloat) -> Shadow
+  public func with(opacity: Float) -> Shadow
+}
+extension SignedNumeric {
+  public var negated: Self {
+    get
+  }
+}
+extension String {
+  public func flag() -> String
+}
+extension String {
+  @available(*, deprecated, message: "Please Use SwiftGen Strings enum")
+  public func localized(tableName: String) -> String
+}
+extension String {
+  public func md5Hash() -> String
+}
+extension String {
+  public func underlinedAttributedString() -> NSAttributedString
+  public func attributedParagraphedString(font: UIFont, alignment: NSTextAlignment = .natural, minimumLineHeightAddition: CGFloat = FontSizeConstants.minimumLineHeightAddition, lineSpacing: CGFloat? = nil, color: UIColor? = nil, underlineStyle: NSUnderlineStyle = [], strikeThrough: Bool = false) -> NSMutableAttributedString
+}
+extension String {
+  public var toInt: Int? {
+    get
+  }
+  public var floatConverter: Float {
+    get
+  }
+  public var isFloatValue: Bool {
+    get
+  }
+  public func hasNumbers() -> Bool
+  public func numberOfWords() -> Int
+  public func withMaskedDigits(mask: String = .empty) -> String
+  public func digits() -> String
+  public func digitsAndLetters() -> String
+}
+extension String {
+  public var fullRange: NSRange {
+    get
+  }
+  public var fullRangeForAttributed: NSRange {
+    get
+  }
+}
+extension String {
+  public func sha256() -> String
+}
+extension String {
+  public func heightWithConstrained(width: CGFloat, font: UIFont) -> CGFloat
+  public func widthWithConstrained(height: CGFloat, font: UIFont) -> CGFloat
+  public func sizeWithConstrained(size: CGSize, font: UIFont) -> CGRect
+}
+extension String {
+  public static var empty: String {
+    get
+  }
+  public static var breakline: String {
+    get
+  }
+  public var localized: String {
+    get
+  }
+  public var acronym: String {
+    get
+  }
+  public var capitalizingFirstLetter: String {
+    get
+  }
+  public var nonBreakable: String {
+    get
+  }
+  public func removingOccurrences(of target: String) -> String
+  public func limitLengthByCharactersIfNeeded(_ maxNumberOfCharacters: Int, addEllipsis: Bool) -> String
+  public func take(first length: Int) -> String
+  public func take(last length: Int) -> String
+  public var isValidEmail: Bool {
+    get
+  }
+  public var containsEmoji: Bool {
+    get
+  }
+  public func safeURL() -> String
+  public func hasCyrillic() -> Bool
+  public func removingCharactersIn(characterSet forbiddenCharacters: CharacterSet) -> String
+}
+public struct Tagged<Tag, RawValue> {
+  public let rawValue: RawValue
+  public init(rawValue: RawValue)
+}
+extension Tagged : CustomStringConvertible {
+  public var description: String {
+    get
+  }
+}
+extension Tagged : Equatable where RawValue : Swift.Equatable {
+  public static func == (lhs: Tagged, rhs: Tagged) -> Bool
+}
+extension Tagged : Decodable where RawValue : Swift.Decodable {
+  public init(from decoder: Decoder) throws
+}
+extension Tagged : Encodable where RawValue : Swift.Encodable {
+  public func encode(to encoder: Encoder) throws
+}
+extension Tagged : Hashable where RawValue : Swift.Hashable {
+  public func hash(into hasher: inout Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Tagged : ExpressibleByIntegerLiteral where RawValue : Swift.ExpressibleByIntegerLiteral {
+  public typealias IntegerLiteralType = RawValue.IntegerLiteralType
+  public init(integerLiteral value: IntegerLiteralType)
+}
+extension Tagged : ExpressibleByNilLiteral where RawValue : Swift.ExpressibleByNilLiteral {
+  public init(nilLiteral: ())
+}
+extension Tagged : ExpressibleByBooleanLiteral where RawValue : Swift.ExpressibleByBooleanLiteral {
+  public typealias BooleanLiteralType = RawValue.BooleanLiteralType
+  public init(booleanLiteral value: BooleanLiteralType)
+}
+extension Tagged : ExpressibleByUnicodeScalarLiteral where RawValue : Swift.ExpressibleByUnicodeScalarLiteral {
+  public typealias UnicodeScalarLiteralType = RawValue.UnicodeScalarLiteralType
+  public init(unicodeScalarLiteral value: UnicodeScalarLiteralType)
+}
+extension Tagged : ExpressibleByExtendedGraphemeClusterLiteral where RawValue : Swift.ExpressibleByExtendedGraphemeClusterLiteral {
+  public typealias ExtendedGraphemeClusterLiteralType = RawValue.ExtendedGraphemeClusterLiteralType
+  public init(extendedGraphemeClusterLiteral: ExtendedGraphemeClusterLiteralType)
+}
+extension Tagged : ExpressibleByStringLiteral where RawValue : Swift.ExpressibleByStringLiteral {
+  public typealias StringLiteralType = RawValue.StringLiteralType
+  public init(stringLiteral: StringLiteralType)
+}
+extension Tagged : Error where RawValue : Swift.Error {
+}
+@_hasMissingDesignatedInitializers final public class TestingManager {
+  final public class func isRunningUnitTests() -> Bool
+  @objc deinit
+}
+@propertyWrapper public struct TestMockable<Value> {
+  public init(wrappedValue value: Value)
+  public var wrappedValue: Value {
+    get
+    set
+  }
+}
+final public class ThreadSafe {
+  public init()
+  final public func callAsFunction<T>(_ block: () -> T) -> T
+  final public func execute<T>(_ block: () -> T) -> T
+  @objc deinit
+}
+extension TimeZone {
+  public static func getTimeZone(named name: String) -> TimeZone?
+}
+public typealias UITestsAccessible = CustomStringConvertible
+public protocol UITestsIdentifier : ObjectiveC.NSObjectProtocol {
+  var uiTestsIdentifier: UITestsAccessible? { get set }
+}
+public enum UITestsKeys {
+}
+public protocol UITestAccessibleTypeProtocol : Swift.CustomStringConvertible, Swift.RawRepresentable {
+}
+extension UITestAccessibleTypeProtocol where Self.RawValue : Swift.StringProtocol {
+  public var description: String {
+    get
+  }
+}
+public protocol ViewModel {
+  associatedtype Input
+  associatedtype Output
+  func bind(_ input: Input) -> Output
+}
+extension GlovoUtilities.LogSeverity : Swift.Hashable {}
